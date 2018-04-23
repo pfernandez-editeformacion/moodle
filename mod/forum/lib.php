@@ -721,8 +721,8 @@ function forum_cron() {
                         // Can't find group - be safe and don't this message.
                         continue;
                     }
-
-                    if (!groups_is_member($discussion->groupid) and !has_capability('moodle/site:accessallgroups', $modcontext)) {
+                    
+                    if (!groups_is_member($discussion->groupid, $userto->id) and !has_capability('moodle/site:accessallgroups', $modcontext, $userto->id)) {
                         // Do not send posts from other groups when in SEPARATEGROUPS or VISIBLEGROUPS.
                         continue;
                     }
